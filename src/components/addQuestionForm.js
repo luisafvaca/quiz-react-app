@@ -1,6 +1,8 @@
 import React from 'react';
 import { Select, Input, Form, Button, Rate} from 'antd';
 import { FormInstance } from 'antd/lib/form';
+import { addQuestion } from '../actions/questions';
+import { connect } from 'react-redux';
 
 const options = ['Biology', 'Mahts', 'Arts'];
 
@@ -35,11 +37,13 @@ class AddQuestionForm extends React.Component {
   }
 
   //send to db to add question
-  test = (e) => {
-    console.log(this.formRef.current.getFieldsValue(['topic', 'question', 'answer', 'difficulty']), 'testestest');
+  test = () => {
+    const fieldsValues = this.formRef.current.getFieldsValue(['topic', 'question', 'answer', 'difficulty']);
+    this.props.questions(fieldsValues);
   }
 
   render(){
+    console.log(this.props.state, 'redux');
     return (
         <section className="add-question">
             <Form
@@ -98,5 +102,15 @@ class AddQuestionForm extends React.Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+      questions: (question) => dispatch(addQuestion(question))
+    }
+  }
 
-export default AddQuestionForm;
+  const mapStateToProps = (state) => {
+    return {
+      state
+    }
+  }
+export default connect(mapStateToProps, mapDispatchToProps)(AddQuestionForm);

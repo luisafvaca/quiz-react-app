@@ -1,8 +1,12 @@
 import React from 'react';
-import { PlusCircleOutlined } from '@ant-design/icons';
+import { PlusCircleOutlined, PlayCircleOutlined } from '@ant-design/icons';
 import {Modal, Button} from 'antd';
 import AddQuestionForm from './components/addQuestionForm';
+
+
+
 import './App.css'
+
 
 class App extends React.Component {
   
@@ -35,11 +39,19 @@ class App extends React.Component {
   render(){
     return (
       <div className="app">
-        <Button type="primary"
-          onClick={this.showModal}
-        >
-          <PlusCircleOutlined />
-        </Button>
+        <div>
+          <Button type="primary"
+            onClick={this.showModal}
+          >
+            <PlusCircleOutlined />
+          </Button>
+        </div>
+        <div>
+          <h1>Comenzar el Quiz!</h1>
+          <Button type="primary">
+            <PlayCircleOutlined />
+          </Button>
+        </div>
         <Modal
           title="Añada una pregunta"
           visible={this.state.visible}

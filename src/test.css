@@ -1,0 +1,12 @@
+input[type="text"]:disabled {
+    background: LightCyan;
+    color: DarkCyan;
+}
+
+input[type="text"]:enable {
+   property: value
+}
+
+input[type="text"]:required {
+    color: LightSteelBlue;
+}
