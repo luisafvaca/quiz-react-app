@@ -36,7 +36,7 @@ class AddQuestionForm extends React.Component {
     });
   }
 
-  test = () => {
+  addQuestion = () => {
     const fieldsValues = this.formRef.current.getFieldsValue(['topic', 'question', 'answer', 'difficulty']);
     this.props.questions(fieldsValues);
   }
@@ -53,16 +53,16 @@ class AddQuestionForm extends React.Component {
             }}
             className='form'
             >
-            <h1>Añada una nueva pregunta</h1>
+            <h1>Add a new question</h1>
             <div>
                 <Form.Item 
-                    label="Seleccione el tema para su pregunta" 
+                    label="Select a topic to sort out the question" 
                     name="topic" 
                     labelCol
                 >
                     <Select
                         style={{ width: '100%' }}
-                        placeholder="Seleccione el tema"
+                        placeholder="topics..."
                         onChange={this.selecItem}
                     >
                         {this.state.options}
@@ -92,8 +92,8 @@ class AddQuestionForm extends React.Component {
                     <Rate count={3}/>
                 </Form.Item>
             </div>
-            <Button type="primary" htmlType="submit" onClick={this.test}>
-                Añadir pregunta
+            <Button type="primary" htmlType="submit" onClick={this.addQuestion}>
+                Add a question
             </Button>
             </Form>
         </section>

@@ -23,3 +23,12 @@
 .ant-modal-footer {
   display: none;
 }
+
+.ant-form-item {
+  display: flex;
+  flex-direction: column;
+} 
+
+.startGame {
+  margin: 10px;
+} 
