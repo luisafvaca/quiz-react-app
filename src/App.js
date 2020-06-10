@@ -38,6 +38,10 @@ class App extends React.Component {
     console.log(e)
   }
 
+  startGame = (params) => {
+    console.log(params)
+  }
+
   render(){
     console.log(this.state)
     return (
@@ -49,7 +53,9 @@ class App extends React.Component {
             <PlusCircleOutlined />
           </Button>
         </div>
-        <StartGame />
+        <StartGame 
+          startGame={this.startGame}
+        />
         <Modal
           visible={this.state.visible}
           onCancel={this.handleCancel}

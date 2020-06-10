@@ -1,12 +1,14 @@
 import React from 'react';
 import { Select, Form, Rate, Button} from 'antd';
 import { PlayCircleOutlined } from '@ant-design/icons';
+import { FormInstance } from 'antd/lib/form';
 import { Row, Col } from 'antd';
 
 const options = ['Biology', 'Mahts', 'Arts'];
 
 
 class StartGame extends React.Component {
+    formRef = React.createRef(<FormInstance />);
     selectItem = (value) => {
         console.log(value)
     }
@@ -21,6 +23,11 @@ class StartGame extends React.Component {
     
         return optionElement
     }
+
+    handleStartGame = () => {
+        const fieldsValues = this.formRef.current.getFieldsValue(['topics', 'difficulty']);
+        this.props.startGame(fieldsValues)
+    } 
     render (){
         return (
             <Row>
@@ -38,7 +45,7 @@ class StartGame extends React.Component {
                     <h1>Configure and Start the quiz!</h1>
                     <Form.Item
                         label="Select a topic to start the quiz:" 
-                        name="topic"
+                        name="topics"
                         labelCol
                     >
                         <Select
@@ -54,7 +61,7 @@ class StartGame extends React.Component {
                         <Rate count={3}/>
                     </Form.Item>
                     <div className="startGame">
-                        <Button type="primary">
+                        <Button type="primary" onClick={this.handleStartGame}>
                             <PlayCircleOutlined />
                         </Button>
                     </div>
