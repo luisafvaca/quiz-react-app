@@ -1,4 +1,5 @@
 import { ADD_NEW_QUESTION } from '../actions/questions';
+import { act } from 'react-dom/test-utils';
 const initialState = {
     questions: [{quiestion: "testest", area: "art", difficulty: 'low'}]
 }
@@ -7,7 +8,10 @@ const initialState = {
 function questions(state=initialState, action){
     switch(action.type) {
         case ADD_NEW_QUESTION:
-            console.log(action.question, 'reduccer')
+            return {
+                ...state,
+                questions: [...state.questions, action.question]
+            }
         default: 
             return state;
     }
